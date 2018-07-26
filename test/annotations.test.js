@@ -29,6 +29,31 @@ test('should add specified annotation to the widget', () => {
     });
 });
 
+test('should add annotation with optional attributes to the widget', () => {
+    expect(Annotations.addTo({
+        widgets: [{
+            title: "widget1",
+            properties: {}
+        }]
+    }, { color: '#fff', fill: 'before', value: "2018-06-26T02:56:36.000Z" })).toEqual({
+        widgets: [{
+            title: "widget1",
+            properties: {
+                annotations: {
+                    vertical: [
+                        {
+                            label: '<i class="aws-cloudwatch-annotations">Deployment</i>',
+                            value: "2018-06-26T02:56:36.000Z",
+                            fill: 'before',
+                            color: '#fff'
+                        }
+                    ]
+                }
+            }
+        }]
+    });
+});
+
 test('should limit added annotations to the widget', () => {
     expect(Annotations.addTo({
         widgets: [{
