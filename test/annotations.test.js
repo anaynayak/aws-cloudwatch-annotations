@@ -54,6 +54,28 @@ test('should add annotation with optional attributes to the widget', () => {
     });
 });
 
+test('should not add annotations for alarm widgets', () => {
+    expect(Annotations.addTo({
+        widgets: [{
+            title: "widget1",
+            properties: {
+                annotations: {
+                    alarms: ['alarm1']
+                }
+            }
+        }]
+    }, 'vertical', { title: 'Deployment', color: '#fff', fill: 'before', value: "2018-06-26T02:56:36.000Z" })).toEqual({
+        widgets: [{
+            title: "widget1",
+            properties: {
+                annotations: {
+                    alarms: ['alarm1']
+                }
+            }
+        }]
+    });
+});
+
 test('should limit added annotations to the widget', () => {
     expect(Annotations.addTo({
         widgets: [{
