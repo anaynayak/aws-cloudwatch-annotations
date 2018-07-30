@@ -1,5 +1,7 @@
 #! /usr/bin/env node
 var meow = require('meow');
+var getStdin = require('get-stdin');
+var Annotations = require('../lib/annotations');
 
 var config = meow(`
 Usage:
@@ -13,9 +15,9 @@ Options:
     --value, -v             Annotation value
 `, {
         flags: {
-            label: {
+            title: {
                 type: 'string',
-                alias: 'l',
+                alias: 't',
                 default: 'Deployment'
             },
             value: {
@@ -43,13 +45,10 @@ Options:
         }
     });
 
-var Reader = require('../lib/reader');
-var Annotations = require('../lib/annotations');
-
 if (config.input.length == 0 || !['horizontal', 'vertical'].includes(config.input[0])) {
     config.showHelp();
 }
 
-Reader.read(function (json) {
-    console.log(JSON.stringify(Annotations.addTo(json, config.input[0], config.flags)));
+getStdin().then(jsonString => {
+    console.log(JSON.stringify(Annotations.addTo(JSON.parse(jsonString), config.input[0], config.flags)));
 });
