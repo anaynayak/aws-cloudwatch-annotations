@@ -1,18 +1,19 @@
 #! /usr/bin/env node
 var meow = require('meow');
-var getStdin = require('get-stdin');
 var Annotations = require('../lib/annotations');
+var cloudwatch = require('../lib/cloudwatch');
 
 var config = meow(`
 Usage:
-    aws cloudwatch get-dashboard --dashboard-name $SOURCE_DASHBOARD --query 'DashboardBody' --output text | aws-cw-annotate <horizontal|vertical|help>
+    aws-cw-annotate dashboard_name 
 Options:
-    --fill, -f              Fill value for vertical annotation (before/after/between)
+    --fill, -f              Fill value for annotation (before/after/between)
     --color, -c             Annotation color
     --widget-title, -w      Update only widgets whose title matching specified regex
     --limit, -l             Max number of aws-cw-annotate annotations to maintain
     --title, -t             Annotation title
     --value, -v             Annotation value
+    --horizontal, -h        Add horizontal annotation instead of vertical (default)
 `, {
         flags: {
             title: {
@@ -41,14 +42,29 @@ Options:
                 type: 'number',
                 alias: 'l',
                 default: 5
+            },
+            horizontal: {
+                type: 'boolean',
+                alias: 'h',
+                default: false
             }
         }
     });
 
-if (config.input.length == 0 || !['horizontal', 'vertical'].includes(config.input[0])) {
+if (config.input.length == 0 || config.input == 'help') {
     config.showHelp();
 }
 
-getStdin().then(jsonString => {
-    console.log(JSON.stringify(Annotations.addTo(JSON.parse(jsonString), config.input[0], config.flags)));
-});
+var type = config.flags.horizontal ? 'horizontal' : 'vertical';
+var name = config.input[0];
+
+cloudwatch.getDashboard(name).then(data => {
+    var body = Annotations.addTo(data, type, config.flags);
+    return cloudwatch.putDashboard(name, body).catch((err) => {
+        console.error(err.message);
+        process.exit(1);
+    });
+}).catch((err) => {
+    console.error(err.message);
+    process.exit(1);
+})

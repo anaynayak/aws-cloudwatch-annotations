@@ -19,7 +19,30 @@ test('should add specified annotation to the widget', () => {
                 annotations: {
                     vertical: [
                         {
-                            label: '<i class="aws-cloudwatch-annotations">Deployment</i>',
+                            label: "[Deployment](#aws-cloudwatch-annotations)",
+                            value: "2018-06-26T02:56:36.000Z",
+                        }
+                    ]
+                }
+            }
+        }]
+    });
+});
+
+test('should handle square brackets in annotation label', () => {
+    expect(Annotations.addTo({
+        widgets: [{
+            title: "widget1",
+            properties: {}
+        }]
+    }, 'vertical', { title: '[Deployment]', value: "2018-06-26T02:56:36.000Z" })).toEqual({
+        widgets: [{
+            title: "widget1",
+            properties: {
+                annotations: {
+                    vertical: [
+                        {
+                            label: "[\[Deployment\]](#aws-cloudwatch-annotations)",
                             value: "2018-06-26T02:56:36.000Z",
                         }
                     ]
@@ -42,7 +65,7 @@ test('should add annotation with optional attributes to the widget', () => {
                 annotations: {
                     vertical: [
                         {
-                            label: '<i class="aws-cloudwatch-annotations">Deployment</i>',
+                            label: "[Deployment](#aws-cloudwatch-annotations)",
                             value: "2018-06-26T02:56:36.000Z",
                             fill: 'before',
                             color: '#fff'
@@ -84,7 +107,7 @@ test('should limit added annotations to the widget', () => {
                 annotations: {
                     vertical: [
                         {
-                            label: '<i class="aws-cloudwatch-annotations">Older Deployment</i>',
+                            label: "[Older Deployment](#aws-cloudwatch-annotations)",
                             value: "2018-06-26T02:56:36.000Z",
                         },
                     ]
@@ -98,7 +121,7 @@ test('should limit added annotations to the widget', () => {
                 annotations: {
                     vertical: [
                         {
-                            label: '<i class="aws-cloudwatch-annotations">Deployment</i>',
+                            label: "[Deployment](#aws-cloudwatch-annotations)",
                             value: "2018-08-26T12:56:36.100Z",
                         },
                     ]
@@ -116,7 +139,7 @@ test('should not delete existing annotations if within limit', () => {
                 annotations: {
                     vertical: [
                         {
-                            label: '<i class="aws-cloudwatch-annotations">Older Deployment</i>',
+                            label: "[Older Deployment](#aws-cloudwatch-annotations)",
                             value: "2018-06-26T02:56:36.000Z",
                         },
                     ]
@@ -130,11 +153,11 @@ test('should not delete existing annotations if within limit', () => {
                 annotations: {
                     vertical: [
                         {
-                            label: '<i class="aws-cloudwatch-annotations">Older Deployment</i>',
+                            label: "[Older Deployment](#aws-cloudwatch-annotations)",
                             value: "2018-06-26T02:56:36.000Z",
                         },
                         {
-                            label: '<i class="aws-cloudwatch-annotations">Deployment</i>',
+                            label: "[Deployment](#aws-cloudwatch-annotations)",
                             value: "2018-08-26T12:56:36.100Z",
                         }
                     ]
@@ -170,7 +193,7 @@ test('should not consider other annotations for the limit', () => {
                             value: "2018-06-26T02:56:36.000Z",
                         },
                         {
-                            label: '<i class="aws-cloudwatch-annotations">Deployment</i>',
+                            label: "[Deployment](#aws-cloudwatch-annotations)",
                             value: "2018-08-26T12:56:36.100Z",
                         }
                     ]
@@ -202,7 +225,7 @@ test('should only add to matching target widgets', () => {
                     annotations: {
                         vertical: [
                             {
-                                label: '<i class="aws-cloudwatch-annotations">Deployment</i>',
+                                label: "[Deployment](#aws-cloudwatch-annotations)",
                                 value: "2018-08-26T12:56:36.100Z",
                             }
                         ]
