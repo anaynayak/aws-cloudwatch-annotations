@@ -3,7 +3,7 @@ var Annotations = require('../lib/annotations')
 test('should do nothing if there are no widgets', () => {
     expect(Annotations.addTo({
         widgets: []
-    }, 'vertical', { limit: 3, 'widget-title': '.*' })).toEqual({ widgets: [] });
+    }, 'vertical', { limit: 3, 'widgetTitle': '.*' })).toEqual({ widgets: [] });
 });
 
 test('should add specified annotation to the widget', () => {
@@ -217,7 +217,7 @@ test('should only add to matching target widgets', () => {
                 }
             }
         ]
-    }, 'vertical', { title: 'Deployment', 'widget-title': '.*deployment.*', value: "2018-08-26T12:56:36.100Z" })).toEqual({
+    }, 'vertical', { title: 'Deployment', 'widgetTitle': '.*deployment.*', value: "2018-08-26T12:56:36.100Z" })).toEqual({
         widgets: [
             {
                 properties: {

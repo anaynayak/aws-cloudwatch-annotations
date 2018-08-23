@@ -14,6 +14,7 @@ Options:
     --title, -t             Annotation title
     --value, -v             Annotation value
     --horizontal, -h        Add horizontal annotation instead of vertical (default)
+    --preview, -p           Generate preview json only
 `, {
         flags: {
             title: {
@@ -47,6 +48,11 @@ Options:
                 type: 'boolean',
                 alias: 'h',
                 default: false
+            },
+            preview: {
+                type: 'boolean',
+                alias: 'p',
+                default: false
             }
         }
     });
@@ -60,6 +66,10 @@ var name = config.input[0];
 
 cloudwatch.getDashboard(name).then(data => {
     var body = Annotations.addTo(data, type, config.flags);
+    if(config.flags.preview) {
+        console.log(JSON.stringify(body));
+        return Promise.resolve(body);
+    }
     return cloudwatch.putDashboard(name, body).catch((err) => {
         console.error(err.message);
         process.exit(1);
