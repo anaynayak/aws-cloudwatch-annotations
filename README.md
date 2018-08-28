@@ -1,4 +1,5 @@
-# aws-cw-annotate
+# aws-cw-annotate ![Build](https://travis-ci.org/anaynayak/aws-cloudwatch-annotations.svg?branch=master)
+
 
 > Annotate Cloudwatch dashboards with horizontal/vertical annotations
 
