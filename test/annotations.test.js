@@ -52,6 +52,39 @@ test('should handle square brackets in annotation label', () => {
     });
 });
 
+test('should support addition of time range annotation', () => {
+    expect(Annotations.addTo({
+        widgets: [{
+            title: "widget1",
+            properties: {}
+        }]
+    }, 'vertical', {
+            title: 'Deployment',
+            value: "2018-06-26T02:56:36.000Z",
+            upto: "2018-06-26T02:56:36.000Z"
+        })).toEqual({
+            widgets: [{
+                title: "widget1",
+                properties: {
+                    annotations: {
+                        vertical: [
+                            [
+                                {
+                                    label: "[Deployment](#aws-cloudwatch-annotations)",
+                                    value: "2018-06-26T02:56:36.000Z",
+                                },
+                                {
+                                    label: "[Deployment](#aws-cloudwatch-annotations)",
+                                    value: "2018-06-26T02:56:36.000Z",
+                                }
+                            ]
+                        ]
+                    }
+                }
+            }]
+        });
+});
+
 test('should add annotation with optional attributes to the widget', () => {
     expect(Annotations.addTo({
         widgets: [{

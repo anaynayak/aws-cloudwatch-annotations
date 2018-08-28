@@ -15,6 +15,7 @@ Options:
     --value, -v             Annotation value
     --horizontal, -h        Add horizontal annotation instead of vertical (default)
     --preview, -p           Generate preview json only
+    --upto, -u <value>      Add an annotation between --value and --upto 
 `, {
         flags: {
             title: {
@@ -53,6 +54,10 @@ Options:
                 type: 'boolean',
                 alias: 'p',
                 default: false
+            },
+            upto: {
+                type: 'string',
+                alias: 'u'
             }
         }
     });
