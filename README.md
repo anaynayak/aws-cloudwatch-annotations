@@ -24,3 +24,16 @@ Options:
 ```
 
 Initial setup for AWS credentials available via environment variables or via the shared credentials file is necessary. Please look at [AWS credentials documentation](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-credentials-node.html) for details.
+
+
+## Examples
+
+```
+# Vertical annotation between two timestamps
+aws-cw-annotate api-metrics --widget-title annotations --title 'Deployment #42' --value '2018-08-28T11:56:47Z' --upto '2018-08-29T11:59:47Z'
+
+# Vertical annotation at a single timestamp
+aws-cw-annotate api-metrics --widget-title annotations --title 'Enable feature toggle' --value '2018-08-28T11:56:47Z' 
+```
+
+
