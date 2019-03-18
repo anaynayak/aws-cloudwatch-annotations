@@ -174,8 +174,8 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.1.tgz#ae2d5a729477f289d60dd7f96a6314a22dd6c22a"
 
 aws-sdk@^2.287.0:
-  version "2.354.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.354.0.tgz#4c5a8d7b1a77b52dfb8724136656339e2cca3f5e"
+  version "2.423.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.423.0.tgz#bc67427fb602b88a652143fafd2febde94a8141d"
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -184,7 +184,7 @@ aws-sdk@^2.287.0:
     querystring "0.2.0"
     sax "1.2.1"
     url "0.10.3"
-    uuid "3.1.0"
+    uuid "3.3.2"
     xml2js "0.4.19"
 
 aws-sign2@~0.7.0:
@@ -3148,11 +3148,7 @@ util.promisify@^1.0.0:
     define-properties "^1.1.2"
     object.getownpropertydescriptors "^2.0.3"
 
-uuid@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
-
-uuid@^3.1.0:
+uuid@3.3.2, uuid@^3.1.0:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
 
