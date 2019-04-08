@@ -19,7 +19,7 @@
     "test": "test"
   },
   "devDependencies": {
-    "jest": "^23.4.1"
+    "jest": "^24.7.1"
   },
   "repository": {
     "type": "git",
