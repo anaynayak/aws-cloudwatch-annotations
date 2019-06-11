@@ -25,6 +25,24 @@ Options:
 
 Initial setup for AWS credentials available via environment variables or via the shared credentials file is necessary. Please look at [AWS credentials documentation](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-credentials-node.html) for details.
 
+If `aws-cw-annotate` is run on an EC2 instance add the following permissions to the instance role. Adapt it with the correct AWS account ID and dashboard name(s).
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudwatch:PutDashboard",
+                "cloudwatch:GetDashboard"
+            ],
+            "Resource": [
+                "arn:aws:cloudwatch::123456789123:dashboard/annotations"
+            ]
+        }
+    ]
+}
+```
 
 ## Examples
 
@@ -35,5 +53,3 @@ aws-cw-annotate api-metrics --widget-title annotations --title 'Deployment #42' 
 # Vertical annotation at a single timestamp
 aws-cw-annotate api-metrics --widget-title annotations --title 'Enable feature toggle' --value '2018-08-28T11:56:47Z' 
 ```
-
-
