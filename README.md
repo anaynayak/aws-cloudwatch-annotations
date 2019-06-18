@@ -5,7 +5,7 @@
 
 ## Install 
 ```
-$ npm install --global aws-cw-annotate
+$ npm install --global aws-cloudwatch-annotations
 ```
 
 ## Usage
