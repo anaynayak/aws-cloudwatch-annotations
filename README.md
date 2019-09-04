@@ -1,4 +1,5 @@
 # aws-cw-annotate ![Build](https://travis-ci.org/anaynayak/aws-cloudwatch-annotations.svg?branch=master)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fanaynayak%2Faws-cloudwatch-annotations.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fanaynayak%2Faws-cloudwatch-annotations?ref=badge_shield)
 
 
 > Annotate Cloudwatch dashboards with horizontal/vertical annotations
@@ -53,3 +54,7 @@ aws-cw-annotate api-metrics --widget-title annotations --title 'Deployment #42' 
 # Vertical annotation at a single timestamp
 aws-cw-annotate api-metrics --widget-title annotations --title 'Enable feature toggle' --value '2018-08-28T11:56:47Z' 
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fanaynayak%2Faws-cloudwatch-annotations.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fanaynayak%2Faws-cloudwatch-annotations?ref=badge_large)
