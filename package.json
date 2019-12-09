@@ -6,7 +6,7 @@
   "dependencies": {
     "aws-sdk": "^2.287.0",
     "lodash": "^4.17.10",
-    "meow": "^5.0.0"
+    "meow": "^6.0.0"
   },
   "scripts": {
     "test": "jest"
