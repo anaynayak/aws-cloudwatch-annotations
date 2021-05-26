@@ -4,9 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@aws-sdk/client-cloudwatch": "^3.17.0",
-    "lodash": "^4.17.21",
-    "meow": "^10.0.0"
+    "aws-sdk": "^2.287.0",
+    "lodash": "^4.17.10",
+    "meow": "^7.0.1"
   },
   "scripts": {
     "test": "jest"
