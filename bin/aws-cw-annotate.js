@@ -1,7 +1,7 @@
 #! /usr/bin/env node
-var meow = require('meow');
-var Annotations = require('../lib/annotations');
-var cloudwatch = require('../lib/cloudwatch');
+import meow from 'meow';
+import { addTo } from '../lib/annotations.js';
+import { getDashboard, putDashboard } from '../lib/cloudwatch.js';
 
 var config = meow(`
 Usage:
@@ -17,6 +17,7 @@ Options:
     --preview, -p           Generate preview json only
     --upto, -u <value>      Add an annotation between --value and --upto 
 `, {
+        importMeta: import.meta,
         flags: {
             title: {
                 type: 'string',
@@ -35,7 +36,7 @@ Options:
                 type: 'string',
                 alias: 'c'
             },
-            'widget-title': {
+            widgetTitle: {
                 type: 'string',
                 alias: 'w',
                 default: '.*'
@@ -69,13 +70,13 @@ if (config.input.length == 0 || config.input == 'help') {
 var type = config.flags.horizontal ? 'horizontal' : 'vertical';
 var name = config.input[0];
 
-cloudwatch.getDashboard(name).then(data => {
-    var body = Annotations.addTo(data, type, config.flags);
+getDashboard(name).then(data => {
+    var body = addTo(data, type, config.flags);
     if(config.flags.preview) {
         console.log(JSON.stringify(body));
         return Promise.resolve(body);
     }
-    return cloudwatch.putDashboard(name, body).catch((err) => {
+    return putDashboard(name, body).catch((err) => {
         console.error(err.message);
         process.exit(1);
     });

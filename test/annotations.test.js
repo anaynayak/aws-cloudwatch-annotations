@@ -1,13 +1,13 @@
-var Annotations = require('../lib/annotations')
+import { addTo } from '../lib/annotations';
 
 test('should do nothing if there are no widgets', () => {
-    expect(Annotations.addTo({
+    expect(addTo({
         widgets: []
     }, 'vertical', { limit: 3, 'widgetTitle': '.*' })).toEqual({ widgets: [] });
 });
 
 test('should add specified annotation to the widget', () => {
-    expect(Annotations.addTo({
+    expect(addTo({
         widgets: [{
             title: "widget1",
             properties: {}
@@ -30,7 +30,7 @@ test('should add specified annotation to the widget', () => {
 });
 
 test('should handle square brackets in annotation label', () => {
-    expect(Annotations.addTo({
+    expect(addTo({
         widgets: [{
             title: "widget1",
             properties: {}
@@ -53,7 +53,7 @@ test('should handle square brackets in annotation label', () => {
 });
 
 test('should support addition of time range annotation', () => {
-    expect(Annotations.addTo({
+    expect(addTo({
         widgets: [{
             title: "widget1",
             properties: {}
@@ -86,7 +86,7 @@ test('should support addition of time range annotation', () => {
 });
 
 test('should add annotation with optional attributes to the widget', () => {
-    expect(Annotations.addTo({
+    expect(addTo({
         widgets: [{
             title: "widget1",
             properties: {}
@@ -111,7 +111,7 @@ test('should add annotation with optional attributes to the widget', () => {
 });
 
 test('should not add annotations for alarm widgets', () => {
-    expect(Annotations.addTo({
+    expect(addTo({
         widgets: [{
             title: "widget1",
             properties: {
@@ -133,7 +133,7 @@ test('should not add annotations for alarm widgets', () => {
 });
 
 test('should limit added annotations to the widget', () => {
-    expect(Annotations.addTo({
+    expect(addTo({
         widgets: [{
             title: "widget1",
             properties: {
@@ -165,7 +165,7 @@ test('should limit added annotations to the widget', () => {
 });
 
 test('should not delete existing annotations if within limit', () => {
-    expect(Annotations.addTo({
+    expect(addTo({
         widgets: [{
             title: "widget1",
             properties: {
@@ -201,7 +201,7 @@ test('should not delete existing annotations if within limit', () => {
 });
 
 test('should not consider other annotations for the limit', () => {
-    expect(Annotations.addTo({
+    expect(addTo({
         widgets: [{
             title: "widget1",
             properties: {
@@ -237,7 +237,7 @@ test('should not consider other annotations for the limit', () => {
 });
 
 test('should only add to matching target widgets', () => {
-    expect(Annotations.addTo({
+    expect(addTo({
         widgets: [
             {
                 properties: {
