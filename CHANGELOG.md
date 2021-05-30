@@ -1,3 +1,9 @@
+1.2.0 / 2021-05-30
+==================
+
+  * aws-sdk v3 dependency for cloudwatch, meow v10
+  * Update code to use ES6
+
 1.1.1 / 2020-10-02
 ==================
 
