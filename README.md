@@ -1,4 +1,4 @@
-# aws-cw-annotate ![Build](https://travis-ci.org/anaynayak/aws-cloudwatch-annotations.svg?branch=master)
+# aws-cw-annotate ![Build](https://travis-ci.org/anaynayak/aws-cloudwatch-annotations.svg?branch=master) ![Downloads](https://img.shields.io/npm/dw/aws-cloudwatch-annotations) ![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/aws-cloudwatch-annotations)
 
 
 > Annotate Cloudwatch dashboards with horizontal/vertical annotations
