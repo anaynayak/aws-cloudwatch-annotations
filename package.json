@@ -6,7 +6,7 @@
   "dependencies": {
     "@aws-sdk/client-cloudwatch": "^3.17.0",
     "lodash-es": "^4.17.21",
-    "meow": "^10.0.0"
+    "meow": "^10.0.1"
   },
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/.bin/jest"
