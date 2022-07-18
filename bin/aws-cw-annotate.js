@@ -70,6 +70,11 @@ if (config.input.length == 0 || config.input == 'help') {
 var type = config.flags.horizontal ? 'horizontal' : 'vertical';
 var name = config.input[0];
 
+if (type == 'vertical' && isNaN(new Date(config.flags.value))) {
+    console.error(`Vertical annotations require valid date. Given: ${config.flags.value}`);
+    process.exit(1);
+}
+
 getDashboard(name).then(data => {
     var body = addTo(data, type, config.flags);
     if(config.flags.preview) {
