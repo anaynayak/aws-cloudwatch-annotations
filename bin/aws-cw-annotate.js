@@ -5,12 +5,12 @@ import { getDashboard, putDashboard } from '../lib/cloudwatch.js';
 
 var config = meow(`
 Usage:
-    aws-cw-annotate dashboard_name 
+    aws-cloudwatch-annotation dashboard_name 
 Options:
     --fill, -f              Fill value for annotation (before/after/between)
     --color, -c             Annotation color
     --widget-title, -w      Update only widgets whose title matching specified regex
-    --limit, -l             Max number of aws-cw-annotate annotations to maintain
+    --limit, -l             Max number of annotations to maintain
     --title, -t             Annotation title
     --value, -v             Annotation value
     --horizontal, -h        Add horizontal annotation instead of vertical (default)

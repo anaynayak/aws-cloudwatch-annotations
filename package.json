@@ -13,7 +13,8 @@
     "test": "node --experimental-vm-modules node_modules/.bin/jest"
   },
   "bin": {
-    "aws-cw-annotate": "bin/aws-cw-annotate.js"
+    "aws-cw-annotate": "bin/aws-cw-annotate.js",
+    "aws-cloudwatch-annotations": "bin/aws-cloudwatch-annotations.js"
   },
   "description": "CLI application to manage horizontal/vertical annotations on a cloudwatch dashboard",
   "directories": {
